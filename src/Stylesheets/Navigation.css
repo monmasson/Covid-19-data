@@ -1,0 +1,9 @@
+body {
+    background-color: skyblue;
+    background-image: url("http://static1.squarespace.com/static/5e6613a1dc75b87df82b78e1/t/5e6b98beede584624b3f3c97/1584109761526/SoMe-image.jpg?format=1500w");
+    height:'100vh';
+    margin-top:'-70px';
+    font-size:'50px';
+    background-size: 'cover';
+    background-repeat: 'no-repeat'}
+

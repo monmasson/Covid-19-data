@@ -1,0 +1,25 @@
+.covidData {
+    background-color: orangered;
+    width: 30%;
+    margin: auto;
+    margin-top: 15px;
+    border-radius: 6px;
+    padding: 10px;
+  }
+  .covidInfo{
+    font-size: 20px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Geneva, Tahoma, sans-serif;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    padding-left: 10px;
+    background-color: peachpuff;
+    margin-top: 20px;
+    padding: 2px;
+    text-shadow: 1px 1px 1px rgb(71, 67, 67);
+    box-shadow: 5px 5px 5px rgb(71, 67, 67);
+  }
+  h1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
