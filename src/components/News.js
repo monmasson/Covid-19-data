@@ -1,5 +1,5 @@
 import React from "react";
-import "./Stylesheets/News.css"
+import "../Stylesheets/News.css"
 import {Button} from 'reactstrap'
 
 function News() {
