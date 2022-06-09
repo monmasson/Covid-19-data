@@ -3,6 +3,7 @@ import "../Stylesheets/CovidData.css";
 import axios from "axios";
 
 
+
 function CovidData() {
 	const [country, setCountry] = useState("");
 	const [cases, setCases] = useState("");
@@ -12,10 +13,11 @@ function CovidData() {
 	const [deathCases, setDeathCases] = useState("");
 	const [recoveredCases, setRecoveredCases] = useState("");
 	const [userInput, setUserInput] = useState("");
+	const [flag,setFlag] =useState("")
 
 	useEffect(() => {
 
-		fetch("https://disease.sh/v3/covid-19/countries")
+		fetch("https://disease.sh/v3/covid-19/countries") 
 			.then((res) => res.json())
 			.then((data) => {
 				setData(data);
@@ -30,6 +32,7 @@ function CovidData() {
 		todayCases,
 		todayDeaths,
 		todayRecovered,
+		countryInfo,
 	}) => {
 		setCountry(country);
 		setCases(cases);
@@ -38,11 +41,13 @@ function CovidData() {
 		setTodayCases(todayCases);
 		setDeathCases(todayDeaths);
 		setRecoveredCases(todayRecovered);
+		setFlag(countryInfo.flag);
 	};
 
 	const handleSearch = (e) => {
 		setUserInput(e.target.value);
 	};
+
 	const handleSubmit = async (props) => {
 
 		props.preventDefault();
@@ -57,7 +62,7 @@ function CovidData() {
 
 	return (
 		<div className="covidData">
-			<h1>CURRENT COVID-19 DATA</h1>
+			<h1>CURRENT GLOBAL COVID-19 DATA</h1>
 			<div >
 				<form onSubmit={handleSubmit}>
 					{/* input county name */}
@@ -68,7 +73,15 @@ function CovidData() {
 			</div>
 
 			{/* Showing the details of the country */}
-			<div className="covidInfo">
+			<div className="covidInfo" style={{ display: country ? "block" : "none" }}>
+
+				{/* Getting flags in the background .  WORKING */}
+				
+			   <div className="countryFlag">
+					<img src={flag} style={{ height: "50px", width: "50px" }} />
+
+	</div> 
+
 				<p>Country Name : {country} </p>
 
 				<p>Cases : {cases}</p>
@@ -82,6 +95,7 @@ function CovidData() {
 				<p>Deaths Today : {deathCases}</p>
 
 				<p>Recovered Today : {recoveredCases}</p>
+
 			</div>
 		</div>
 	);

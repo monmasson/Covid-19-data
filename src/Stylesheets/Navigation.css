@@ -7,3 +7,32 @@ body {
     background-size: 'cover';
     background-repeat: 'no-repeat'}
 
+    .nav-link {
+        width: 100%;
+        background-color: #555;
+        overflow: auto;
+      }
+      
+      .nav-link a {
+        float: left;
+        padding: 12px;
+        color: white;
+        text-decoration: none;
+        font-size: 17px;
+      }
+      
+      .nav-link a:hover {
+        background-color: white;
+      }
+      
+      .active:link{
+        background-color: red;
+        color: white;
+      }
+
+      .active:link:hover{
+        color: yellow;
+        background-color: transparent;
+        text-decoration: underline;
+      }
+
