@@ -2,9 +2,26 @@ import React from 'react';
 
 import { useState } from 'react';
 import ReactDOM from 'react-dom';
+import { useTranslation } from 'react-i18next'
+import cookies from 'js-cookie'
+
+
+const languages = [
+    {
+        code: 'en',
+        name: 'English',
+        country_code: 'usa',
+    },
+    {
+        code: 'hi',
+        name: 'हिन्दी',
+        country_code: 'in',
+    },]
 
 
 function SignUp() {
+    const { t } = useTranslation()
+    const currentLanguageCode = cookies.get('i18next') || 'en'
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -54,10 +71,10 @@ function SignUp() {
                     {/*when user submit the form , handleSubmit()
         function will be called .*/}
 
-                    <h3> Sign-up Form </h3>
+                    <h3> {t('Sign-up Form')} </h3>
                    
                     <label >
-                        Name:
+                        {t("Name")}
                     </label><br />
                     <input type="text" value={name} required onChange={function (e) { handleChange(e); }} /><br />
                     { /*when user write in name input box , handleChange()

@@ -77,10 +77,10 @@ function TrackUsa() {
             <div className="covidInfo" style={{ display: name ? "block" : "none" }}>
 
                 <p>State Name : {name} </p>
-                <p> <a href={covid19SiteSecondary}>Find Latest Data</a></p>
+                <p> <a href={covid19SiteSecondary} target="_blank">Find Latest Data</a></p>
                 
               
-                <p> <a href={covid19Site}>Local Health site </a> </p>
+                <p> <a href={covid19Site}target="_blank">Local Health site </a> </p>
 
             </div>
         </div>

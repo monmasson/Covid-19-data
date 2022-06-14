@@ -1,24 +1,29 @@
-import i18next from "i18next";
-import HttpBackend from "i18next-http-backend";
-import LanguageDetector from "i18next-browser-languagedetector";
-import { initReactI18next } from "react-i18next";
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import Backend from 'i18next-xhr-backend';
+import LanguageDetector from 'i18next-browser-languagedetector';
 
-const apiKey = "qekvHqBNmRQ7nz9cRqrmbA";
-const loadPath = `https://api.i18nexus.com/project_resources/translations/{{lng}}/{{ns}}.json?api_key=${apiKey}`;
+const fallbackLng = ['en'];
+const availableLanguages = ['en', 'hi', ];
 
-i18next
-  .use(HttpBackend)
-  .use(LanguageDetector)
-  .use(initReactI18next)
+i18n
+  .use(Backend) // load translations using http (default                                               public/assets/locals/en/translations)
+  .use(LanguageDetector) // detect user language
+  .use(initReactI18next) // pass the i18n instance to react-i18next.
   .init({
-    fallbackLng: "en",
+    fallbackLng, // fallback language is english.
 
-    ns: ["default"],
-    defaultNS: "default",
+    detection: {
+      checkWhitelist: true, // options for language detection
+    },
 
-    supportedLngs: ["en","hi"],
-    
-    backend: {
-      loadPath: loadPath
-    }
-  })
+    debug: false,
+
+    whitelist: availableLanguages,
+
+    interpolation: {
+      escapeValue: false, // no need for react. it escapes by default
+    },
+  });
+
+export default i18n;

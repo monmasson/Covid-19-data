@@ -5,8 +5,9 @@ import Home from "./components/Home";
 import Info from "./components/Info";
 import CovidData from "./components/CovidData";
 import News from "./components/News";
-import Language from "./components/Language";
+//import LanguageSelect from "./components/LanguageSelect";
 import SignUp from "./components/SignUp";
+import Articles from "./components/Articles";
 
 import { Route, Routes } from 'react-router-dom';
 import { useTranslation } from 'react-i18next'
@@ -19,6 +20,7 @@ import TrackUsa from "./components/TrackUsa";
 
 
 function App() {
+  const {t } = useTranslation()
 
 return <div class="text-center text-md-right">
 
@@ -30,8 +32,7 @@ return <div class="text-center text-md-right">
       <Route path="/News" element={<News />} />
       <Route path ="/sign-up" element={<SignUp/>}/>
       <Route path ="/TrackUsa" element={<TrackUsa/>}/>
-      <Route path="/Language" element={<Language />} />
-
+      <Route path="/Articles" element={<Articles/>}/>
 
     </Routes>
 

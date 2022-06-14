@@ -1,45 +1,156 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Nav } from "reactstrap";
+//import { Nav } from "reactstrap";
+import { useTranslation } from 'react-i18next'
+import i18next from 'i18next'
+import cookies from 'js-cookie'
+import classNames from 'classnames'
+//import 'flag-icon-css/css/flag-icon.min.css'// NOT WORKING 
+
+
+
+
+
 import "../Stylesheets/Navigation.css"
 
+const languages = [
+    {
+        code: 'en',
+        name: 'English',
+        country_code: 'usa',
+    },
+    {
+        code: 'hi',
+        name: 'हिन्दी',
+        country_code: 'in',
+    },
+
+]
+// TOO big to put in the code so made a function for GlobeIcon. 
+const GlobeIcon = ({ width = 24, height = 24 }) => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={width}
+        height={height}
+        fill="currentColor"
+        className="bi bi-globe"
+        viewBox="0 0 16 16"
+    >
+        <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z" />
+    </svg>
+)
+
+
+
+
 function Navigation() {
+
+    const { t } = useTranslation()
+    const currentLanguageCode = cookies.get('i18next') || 'en'
+    //const currentLanguage = languages.find((l) => l.code === currentLanguageCode)
+
+
+    const styleObj = {
+        fontSize: 20,
+        color: "Darkblue",
+        textAlign: "center",
+        //paddingTop: "100px",
+    }
+
+
     return (
         <div className="navigation">
-            <nav className="navbar navbar-expand navbar-dark bg-dark">
+            <nav className="navbar navbar-expand navbar-light bg-light" style={{ backgroundImage: `url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnfMPJrZ_rzc2djzCf3vA7PgplxL6D8Mj0og&usqp=CAU")` }}>
                 <div className="container" >
-                    <NavLink className="navbar-brand" to="/News">
-                        COVID-19 DATA LATEST NEWS
-                    </NavLink>
-                    <NavLink className="navbar-brand" to="/TrackUsa">
-                       Track USA DATA
+                    <NavLink className="navbar-brand px-3" to="/News">
+                        {t("COVID-19 DATA LATEST NEWS")}
                     </NavLink>
 
-                    <NavLink to='/sign-up'>
-                                    SUBSCRIBE to our e-newsletter
-                                </NavLink>
+                    <NavLink className="navbar-brand px-4" to="/TrackUsa">
+                        Track USA DATA
+                    </NavLink>
+
+                    <NavLink className="navbar-brand px-4" to="/Articles" >
+                        ARTICLES
+                    </NavLink>
+
+
+                    <NavLink className="navbar-brand px-4" to='/sign-up'>
+                        SUBSCRIBE 
+                    </NavLink>
                     <div>
-                        <ul className="navbar-nav ml-auto">
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to="/">
-                                    <a class="active" href="#">
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-                                        </svg> Home</a>
-                                </NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to="/Info">
-                                    More Information
-                                </NavLink>
-                               
-                            </li>
+
+                        <NavLink className="nav-link px-4" to="/">
+                            <a class="active" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                                </svg> Home</a>
+                        </NavLink>
+
+
+                        <NavLink className="nav-link px-4" to="/Info">
+                            More Information
+                        </NavLink>
 
 
 
-                        </ul>
+                    </div>
+
+                    <div className="container">
+
+                        <div className="language-select px-4">
+                            <div className="collapse navbar-collapse justify-content-end">
+                                <div className="dropdown">
+                                    <button
+                                        className="btn btn-link dropdown-toggle"
+                                        type="button"
+                                        id="dropdownMenuButton1"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false"
+                                        
+                                    >
+                                        <GlobeIcon />
+
+                                    </button>
+                                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li>
+                                            {/* To display the word "language" in the native diaglogue*/}
+                                            <span className="dropdown-item-text">{t('language')}</span>
+                                        </li>
+                                        {languages.map(({ code, name, country_code }) => (
+                                            <li key={country_code}> {/*unique key will be country code*/}
+
+
+
+                                                <a
+                                                    href="#"
+
+                                                    className={classNames('dropdown-item', {
+                                                        disabled: currentLanguageCode === code,
+                                                    })}
+                                                    onClick={() => {
+                                                        i18next.changeLanguage(code)
+                                                    }}
+                                                >
+                                                    {name}
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div >
+                            <h1 style={styleObj} >{t('welcome_message')}</h1>
+
+                        </div>
                     </div>
                 </div>
+
+
+
+
             </nav>
         </div>
     );

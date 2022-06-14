@@ -12,14 +12,15 @@ import { initReactI18next } from 'react-i18next'
 import HttpApi from 'i18next-http-backend'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import 'bootstrap/dist/js/bootstrap.js'
-
+import 'bootstrap/dist/css/bootstrap.min.css'
+//import 'flag-icon-css/css/flag-icon.min.css'
 
 i18next
   .use(HttpApi)
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    supportedLngs: ['en', 'hi', 'fr'],
+    supportedLngs: ['en', 'hi'],
     fallbackLng: 'en',
     debug: false,
     // Options for language detector
@@ -29,9 +30,11 @@ i18next
     },
     // react: { useSuspense: false },
     backend: {
-      loadPath: '/assets/locales/{{lng}}/translation.json',
+      loadPath: '/assets/locales/{{lng}}/translation.json', // change to i18next. 
     },
   })
+
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -40,7 +43,7 @@ root.render(
 
     <Navigation />
     <App />
-    <Footer />
+ <Footer />
   </BrowserRouter>
 );
 
