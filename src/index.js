@@ -1,12 +1,7 @@
-import React from 'react';
+import React ,{Suspense} from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import Navigation from './components/Navigation';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import Footer from './components/Footer';
-import './components/I18n.js'
 import i18next from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import HttpApi from 'i18next-http-backend'
@@ -14,6 +9,13 @@ import LanguageDetector from 'i18next-browser-languagedetector'
 import 'bootstrap/dist/js/bootstrap.js'
 import 'bootstrap/dist/css/bootstrap.min.css'
 //import 'flag-icon-css/css/flag-icon.min.css'
+
+import './index.css';
+import App from'./App';
+import Navigation from './components/Navigation';
+import Footer from './components/Footer';
+import './components/I18n.js';
+
 
 i18next
   .use(HttpApi)
@@ -40,10 +42,12 @@ i18next
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
+  <Suspense fallback="Loading....">
 
     <Navigation />
     <App />
  <Footer />
+ </Suspense>
   </BrowserRouter>
 );
 

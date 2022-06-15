@@ -4,7 +4,9 @@ import axios from "axios";
 
 
 
+
 function CovidData() {
+	//const {t}=useTranslation(["CURRENT GLOBAL COVID-19 DATA","Search","Country Name",])
 	const [country, setCountry] = useState("");
 	const [cases, setCases] = useState("");
 	const [recovered, setRecovered] = useState("");

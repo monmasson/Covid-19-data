@@ -1,3 +1,14 @@
+Heroku link: https://track--19.herokuapp.com/
+
+API for Articles (NEWS API) is not functioning on the Heroku app but works on the local host. 
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -5,7 +5,6 @@ import Home from "./components/Home";
 import Info from "./components/Info";
 import CovidData from "./components/CovidData";
 import News from "./components/News";
-//import LanguageSelect from "./components/LanguageSelect";
 import SignUp from "./components/SignUp";
 import Articles from "./components/Articles";
 
